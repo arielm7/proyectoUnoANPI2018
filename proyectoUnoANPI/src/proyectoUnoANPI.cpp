@@ -12,20 +12,23 @@
 #include <iomanip>
 #include <complex>
 #include <cmath>
-#include "deflateAlgorithms.cpp"
+//#include "deflateAlgorithms.cpp"
+#include "MullerProyecto1.cpp"
 using namespace std;
 
 using namespace boost::math;
 using namespace boost::math::tools; // for polynomial
 int main() {
-	complex<double> x=7;
-	complex<double> y=9;
-	polynomial<double> const c{{4,0,1}};
-	polynomial<double> resi ={{0,0,0}};
-	boost::array<double, 3> a = {{-4, 0,1}};
 
-	complex<double> const j(1,-3);
-	cout << deflate2(c,j,resi) << endl; // prints hola
-	cout<<"residuo: "<<resi<<endl;
+	polynomial<double> const c{{-6,1,1}};
+	double resi =0;
+	double const j=2.01;
+	//cout << deflate(c,j,resi) << endl; // prints hola
+	//cout<<"residuo: "<<resi<<endl;
+
+	double point = -5.3;
+	polynomial<double> poly{{-10,-11,4,1}};
+	std::vector<double> raices = deflatedMuller<double>(poly, point);
+	std::cout <<"raices: "<< raices[1] << std::endl;
 	return 0;
 }

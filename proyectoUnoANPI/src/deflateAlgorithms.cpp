@@ -35,8 +35,7 @@ polynomial<T> deflate2(const polynomial<T>& poly, const
 		std::complex<T>& root,polynomial<T>& residuo){
 
 	polynomial<T> result=poly;
-	polynomial<T>	cuadratic={{(root.real()*root.real())+(root.imag()*root.imag()),-2*root.real(),1}};
-	std::cout<<root.imag()<<"cuadra"<<std::endl;
+	polynomial<T> cuadratic={{(root.real()*root.real())+(root.imag()*root.imag()),-2*root.real(),1}};
 	int n=poly.size()-1;
 	residuo=poly;
 
@@ -48,9 +47,7 @@ polynomial<T> deflate2(const polynomial<T>& poly, const
 
 	for (k=n-2;k>=0;k--) {
 	result[k]=residuo[k+2];
-	//std::cout<<result[k]<<std::endl;
-	for (j=k+1;j>=k;j--){ residuo[j] -= result[k]*cuadratic[j-k];
-	std::cout<<cuadratic[j-k]<<std::endl;}
+	for (j=k+1;j>=k;j--){ residuo[j] -= result[k]*cuadratic[j-k];}
 	}
 	for (j=2;j<=n;j++) residuo[j]=T(0);
 

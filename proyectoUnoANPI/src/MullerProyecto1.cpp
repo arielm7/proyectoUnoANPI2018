@@ -3,6 +3,7 @@
 #include <complex>
 #include "math.h"
 #include <boost/math/tools/polynomial.hpp>
+#include "deflateAlgorithms.cpp"
 using namespace boost::math::tools;
 using namespace boost::math;
 
@@ -50,10 +51,23 @@ T mullerMetod (const polynomial<T>& poly,T xr){
 	return xr;
 }
 
-int main(){
+template<typename T>
+std::vector<T> deflatedMuller(polynomial<T>& poly,T xr){
+	int polyGrade=poly.size()-1; //input polynomial grade
+	std::vector<T> roots(polyGrade); //output vector of the calculated roots
+	T resi =0;
+	for(int i=0;i<polyGrade;i++){
+		roots[i]=mullerMetod(poly, xr);
+		std::cout<<"nPoly: "<<poly<<std::endl;
+		poly=deflate<T>(poly,roots[i],resi);
+	}
+	return roots;
+}
+
+/*int main(){
 	std::cout << "hola" << std::endl;
 	double point = 1.0;
 	polynomial<double> const poly{{-18,9,7,1,1}};
 	double raiz = mullerMetod(poly, point);
 	//std::cout << raiz << std::endl;
-}
+}*/
