@@ -53,7 +53,7 @@ complex<T> Complejo<T>::div(complex<T> a, complex<T> b){
 	return a/b;
 }
 
-template<class T>
+/**template<class T>
 T Complejo<T>::abs(complex<T> z){
 	T x,y,ans,temp;
 	x=abs(z.real());
@@ -75,7 +75,7 @@ T Complejo<T>::abs(complex<T> z){
 
 template<class T>
 complex<T> Complejo<T>::cmul(T data, complex<T> z){
-	return new complex<T>(data*z.real(), data*z.imag());
+	return  complex<T>(data*z.real(), data*z.imag());
 }
 
 template<class T>
@@ -83,7 +83,7 @@ complex<T> Complejo<T>::sqrt(complex<T> z){
 	T real, imag;
 	T x,y,w,r;
 	if ((z.real() == 0.0) && (z.imag() == 0.0)) {
-		return new complex<T>();
+		return complex<T>();
 	} else {
 		x=abs(z.real());
 		y=abs(z.imag());
@@ -101,8 +101,8 @@ complex<T> Complejo<T>::sqrt(complex<T> z){
 			imag=(z.imag() >= 0) ? w : -w;
 			real=z.imag()/(2.0*imag);
 		}
-		return new complex<T>(real, imag);
+		return complex<T>(real, imag);
 	}
 }
-
+*/
 #endif /* COMPLEJOS_COMPLEJO_H_ */
